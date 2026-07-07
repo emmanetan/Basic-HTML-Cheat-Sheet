@@ -1,0 +1,1069 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="A basic HTML cheat sheet for beginners with examples, search, theme toggle, and copy buttons."
+    />
+    <title>Basic HTML Cheat Sheet</title>
+    <style>
+      :root {
+        --bg: #f6f8fa;
+        --card: #ffffff;
+        --border: #d0d7de;
+        --text: #24292f;
+        --muted: #57606a;
+        --header: rgba(246, 248, 250, 0.92);
+        --code-bg: #0d1117;
+        --code-text: #c9d1d9;
+        --accent: #0969da;
+        --accent-hover: #0550ae;
+        --shadow: 0 1px 0 rgba(27, 31, 36, 0.04);
+        --success: #1a7f37;
+      }
+
+      [data-theme="dark"] {
+        --bg: #0d1117;
+        --card: #161b22;
+        --border: #30363d;
+        --text: #c9d1d9;
+        --muted: #8b949e;
+        --header: rgba(13, 17, 23, 0.92);
+        --code-bg: #010409;
+        --code-text: #c9d1d9;
+        --accent: #58a6ff;
+        --accent-hover: #79c0ff;
+        --shadow: 0 1px 0 rgba(1, 4, 9, 0.6);
+        --success: #3fb950;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        font-family:
+          -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial,
+          sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+        background: var(--bg);
+        color: var(--text);
+        line-height: 1.6;
+        transition:
+          background-color 0.25s ease,
+          color 0.25s ease;
+      }
+
+      a {
+        color: var(--accent);
+        text-decoration: none;
+      }
+
+      a:hover {
+        text-decoration: underline;
+      }
+
+      .topbar {
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        border-bottom: 1px solid var(--border);
+        background: var(--header);
+        backdrop-filter: blur(12px);
+      }
+
+      .topbar-inner {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 16px 20px;
+        display: flex;
+        gap: 14px;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+
+      .brand {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+        min-width: 240px;
+        flex: 1 1 240px;
+      }
+
+      .brand-title {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .brand-icon-wrap {
+        width: 34px;
+        height: 34px;
+        flex: 0 0 auto;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        background: transparent;
+        border: 0;
+        box-shadow: none;
+      }
+
+      .brand-icon {
+        width: 50px;
+        height: 50px;
+        flex: 0 0 auto;
+        object-fit: contain;
+        display: block;
+      }
+
+      .brand h1 {
+        margin: 0;
+        font-size: 1.2rem;
+        line-height: 1.2;
+      }
+
+      .brand p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 0.92rem;
+      }
+
+      .controls {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        flex: 1 1 420px;
+        justify-content: flex-end;
+        flex-wrap: wrap;
+      }
+
+      .search-wrap {
+        position: relative;
+        flex: 1 1 280px;
+        max-width: 420px;
+      }
+
+      .search-wrap input {
+        width: 100%;
+        height: 44px;
+        padding: 11px 14px;
+        border-radius: 25px;
+        border: 1px solid var(--border);
+        background: var(--card);
+        color: var(--text);
+        outline: none;
+        box-shadow: var(--shadow);
+        transition:
+          border-color 0.2s ease,
+          box-shadow 0.2s ease;
+      }
+
+      .search-wrap input:focus {
+        border-color: var(--accent);
+        box-shadow: 0 0 0 3px rgba(9, 105, 218, 0.15);
+      }
+
+      .button {
+        appearance: none;
+        -webkit-tap-highlight-color: transparent;
+        touch-action: manipulation;
+        border: 1px solid var(--border);
+        background: var(--card);
+        color: var(--text);
+        border-radius: 10px;
+        padding: 11px 14px;
+        font: inherit;
+        cursor: pointer;
+        transition:
+          transform 0.15s ease,
+          border-color 0.2s ease,
+          background-color 0.2s ease,
+          color 0.2s ease;
+        box-shadow: var(--shadow);
+        white-space: nowrap;
+      }
+
+      .button:focus {
+        outline: none;
+      }
+
+      .button:focus-visible {
+        box-shadow:
+          0 0 0 3px rgba(9, 105, 218, 0.24),
+          var(--shadow);
+      }
+
+      .button:hover {
+        
+        border-color: var(--accent);
+      }
+
+      .button.primary {
+        background: var(--accent);
+        border-color: var(--accent);
+        color: #ffffff;
+      }
+
+      #themeToggle {
+        -webkit-tap-highlight-color: transparent;
+        height: 44px;
+        width: 124px;
+        padding: 0 12px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: space-between;
+        position: relative;
+        border-radius: 999px;
+        overflow: hidden;
+        background:
+          linear-gradient(180deg, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0))
+          , var(--accent);
+        box-shadow:
+          inset 0 1px 0 rgba(255, 255, 255, 0.12),
+          0 1px 0 rgba(27, 31, 36, 0.04);
+      }
+
+      #themeToggle:focus-visible {
+        box-shadow:
+          0 0 0 3px rgba(9, 105, 218, 0.24),
+          inset 0 1px 0 rgba(255, 255, 255, 0.12),
+          0 1px 0 rgba(27, 31, 36, 0.04);
+      }
+
+      [data-theme="dark"] #themeToggle {
+        background:
+          linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0))
+          , #1f2937;
+        box-shadow:
+          inset 0 1px 0 rgba(255, 255, 255, 0.05),
+          0 1px 0 rgba(1, 4, 9, 0.28);
+      }
+
+      .theme-switch-track {
+        position: absolute;
+        inset: 5px;
+        border-radius: 999px;
+        background: linear-gradient(180deg, #f9fafb 0%, #eef2f6 100%);
+        border: 1px solid rgba(208, 215, 222, 0.85);
+        transition:
+          background-color 0.25s ease,
+          border-color 0.25s ease;
+      }
+
+      [data-theme="dark"] .theme-switch-track {
+        background: linear-gradient(180deg, #1f2937 0%, #0f172a 100%);
+        border-color: rgba(48, 54, 61, 0.9);
+      }
+
+      .theme-switch-thumb {
+        position: absolute;
+        top: 50%;
+        left: 10px;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background: linear-gradient(180deg, #ffffff 0%, #e8edf2 100%);
+        box-shadow:
+          0 2px 6px rgba(27, 31, 36, 0.16),
+          inset 0 1px 0 rgba(255, 255, 255, 0.6);
+        transform: translateY(-50%) translateX(0);
+        transition:
+          transform 0.28s cubic-bezier(0.4, 0, 0.2, 1),
+          background-color 0.25s ease,
+          box-shadow 0.25s ease;
+        z-index: 1;
+      }
+
+      [data-theme="dark"] .theme-switch-thumb {
+        transform: translateY(-50%) translateX(74px);
+        background: linear-gradient(180deg, #ffe8b5 0%, #f6c453 100%);
+        box-shadow:
+          0 2px 8px rgba(245, 200, 71, 0.35),
+          inset 0 1px 0 rgba(255, 255, 255, 0.35);
+      }
+
+      .theme-switch-icon {
+        position: relative;
+        width: 16px;
+        height: 16px;
+        flex: 0 0 auto;
+        z-index: 2;
+        color: var(--text);
+        opacity: 0.86;
+        transition:
+          opacity 0.25s ease,
+          transform 0.25s ease,
+          color 0.25s ease;
+      }
+
+      .theme-switch-icon.sun {
+        margin-right: auto;
+        transform: translateX(-1px);
+      }
+
+      .theme-switch-icon.moon {
+        margin-left: auto;
+        transform: translateX(1px);
+      }
+
+      [data-theme="dark"] .theme-switch-icon.sun {
+        opacity: 0.35;
+      }
+
+      [data-theme="dark"] .theme-switch-icon.moon {
+        opacity: 1;
+      }
+
+      [data-theme="light"] .theme-switch-icon.sun,
+      :root:not([data-theme]) .theme-switch-icon.sun {
+        opacity: 1;
+      }
+
+      [data-theme="light"] .theme-switch-icon.moon,
+      :root:not([data-theme]) .theme-switch-icon.moon {
+        opacity: 0.35;
+      }
+
+      .button.primary:hover {
+        background: var(--accent-hover);
+        border-color: var(--accent-hover);
+      }
+
+      .shell {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 24px 20px 80px;
+      }
+
+      .readme {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        box-shadow: var(--shadow);
+        overflow: hidden;
+      }
+
+      .readme-header {
+        padding: 28px 28px 0;
+      }
+
+      .kicker {
+        margin: 0 0 8px;
+        color: var(--muted);
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        font-size: 0.78rem;
+        font-weight: 700;
+      }
+
+      .readme-header h2 {
+        margin: 0;
+        font-size: clamp(1.6rem, 2.4vw, 2.4rem);
+        line-height: 1.15;
+      }
+
+      .intro {
+        margin: 14px 0 0;
+        max-width: 72ch;
+        color: var(--muted);
+      }
+
+      .content {
+        padding: 8px 28px 28px;
+      }
+
+      .cheat-section {
+        margin-top: 24px;
+        padding-top: 24px;
+        border-top: 1px solid var(--border);
+      }
+
+      .cheat-section:first-of-type {
+        margin-top: 20px;
+        padding-top: 0;
+        border-top: none;
+      }
+
+      .cheat-section h3 {
+        margin: 0 0 8px;
+        font-size: 1.25rem;
+      }
+
+      .cheat-section p {
+        margin: 0 0 14px;
+        color: var(--muted);
+        max-width: 78ch;
+      }
+
+      .code-card {
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        overflow: hidden;
+        background: var(--bg);
+      }
+
+      .code-toolbar {
+        display: flex;
+        justify-content: flex-end;
+        padding: 10px 12px;
+        border-bottom: 1px solid var(--border);
+        background: color-mix(in srgb, var(--card) 88%, var(--bg));
+      }
+
+      .code-toolbar .button {
+        padding: 8px 12px;
+        font-size: 0.92rem;
+      }
+
+      pre {
+        margin: 0;
+        padding: 18px 18px 20px;
+        overflow-x: auto;
+        background: var(--code-bg);
+        color: var(--code-text);
+        font-size: 0.94rem;
+        line-height: 1.6;
+        tab-size: 2;
+      }
+
+      code {
+        font-family:
+          ui-monospace,
+          SFMono-Regular,
+          SF Mono,
+          Consolas,
+          Liberation Mono,
+          Menlo,
+          monospace;
+      }
+
+      .no-results {
+        display: none;
+        margin: 24px 0 0;
+        padding: 18px 20px;
+        border: 1px dashed var(--border);
+        border-radius: 14px;
+        background: color-mix(in srgb, var(--card) 92%, var(--bg));
+        color: var(--muted);
+      }
+
+      .back-to-top {
+        position: fixed;
+        right: 18px;
+        bottom: 18px;
+        z-index: 60;
+        display: none;
+        border: 1px solid var(--border);
+        background: var(--card);
+        color: var(--text);
+        border-radius: 999px;
+        padding: 12px 16px;
+        box-shadow: 0 12px 32px rgba(27, 31, 36, 0.18);
+      }
+
+      .back-to-top:hover {
+        border-color: var(--accent);
+      }
+
+      .status {
+        font-size: 0.9rem;
+        color: var(--muted);
+        margin-left: auto;
+      }
+
+      .hidden {
+        display: none !important;
+      }
+
+      @media (max-width: 800px) {
+        .topbar-inner {
+          display: grid;
+          grid-template-columns: minmax(0, 1fr) auto;
+          grid-template-areas:
+            "brand toggle"
+            "search search";
+          column-gap: 12px;
+          row-gap: 12px;
+          align-items: center;
+        }
+
+        .brand {
+          grid-area: brand;
+          min-width: 0;
+          flex: none;
+          flex-direction: row;
+          align-items: center;
+          gap: 12px;
+        }
+
+        .brand p {
+          display: none;
+        }
+
+        .controls {
+          display: contents;
+        }
+
+        .search-wrap {
+          grid-area: search;
+          flex: none;
+          max-width: none;
+          width: 100%;
+        }
+
+        #themeToggle {
+          grid-area: toggle;
+          justify-self: end;
+          margin-left: 0;
+          width: 124px;
+        }
+
+        .content,
+        .readme-header {
+          padding-left: 18px;
+          padding-right: 18px;
+        }
+
+        .back-to-top {
+          right: 14px;
+          bottom: 14px;
+        }
+      }
+
+      @media (max-width: 520px) {
+        .topbar-inner {
+          padding: 14px 14px 16px;
+        }
+
+        .brand h1 {
+          font-size: 1.05rem;
+        }
+
+        .shell {
+          padding: 14px 12px 72px;
+        }
+
+        .code-toolbar {
+          justify-content: stretch;
+        }
+
+        .code-toolbar .button {
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="topbar-inner">
+        <div class="brand">
+          <div class="brand-title">
+            <span class="brand-icon-wrap" aria-hidden="true">
+              <img class="brand-icon" src="html_logo.webp" alt="" />
+            </span>
+            <h1>Basic HTML Cheat Sheet</h1>
+          </div>
+          
+        </div>
+        <div class="controls">
+          <div class="search-wrap">
+            <input
+              id="searchInput"
+              type="search"
+              placeholder="Search sections..."
+              aria-label="Search cheat sheet sections"
+            />
+          </div>
+          <button
+            id="themeToggle"
+            class="button primary"
+            type="button"
+            aria-label="Toggle theme"
+            aria-pressed="false"
+          >
+            <span class="theme-switch-track" aria-hidden="true"></span>
+            <span class="theme-switch-thumb" aria-hidden="true"></span>
+            <svg class="theme-switch-icon sun" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path fill="currentColor" d="M12 18a6 6 0 1 1 0-12 6 6 0 0 1 0 12zm0-15a1 1 0 0 1 1 1v1.1a1 1 0 1 1-2 0V4a1 1 0 0 1 1-1zm0 17.9a1 1 0 0 1 1 1V20a1 1 0 1 1-2 0v1.9a1 1 0 0 1 1-1zM4 11h1.1a1 1 0 1 1 0 2H4a1 1 0 1 1 0-2zm14.9 0H20a1 1 0 1 1 0 2h-1.1a1 1 0 1 1 0-2zM5.6 6.8a1 1 0 0 1 1.4 0l.8.8a1 1 0 1 1-1.4 1.4l-.8-.8a1 1 0 0 1 0-1.4zm10.6 10.6a1 1 0 0 1 1.4 0l.8.8a1 1 0 0 1-1.4 1.4l-.8-.8a1 1 0 0 1 0-1.4zM17.2 5.6a1 1 0 0 1 0 1.4l-.8.8a1 1 0 1 1-1.4-1.4l.8-.8a1 1 0 0 1 1.4 0zM6.4 16.4a1 1 0 0 1 0 1.4l-.8.8a1 1 0 0 1-1.4-1.4l.8-.8a1 1 0 0 1 1.4 0z"/>
+            </svg>
+            <svg class="theme-switch-icon moon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path fill="currentColor" d="M21 13.2A8.5 8.5 0 0 1 10.8 3a9 9 0 1 0 10.2 10.2z"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main class="shell">
+      <article class="readme">
+        <header class="readme-header">
+          <p class="kicker">HTML Basics</p>
+          <h2>Learn the building blocks of web pages</h2>
+          <p class="intro">
+            Basic cheat sheet. Use the search bar to find a section, copy any
+            code block.
+          </p>
+        </header>
+
+        <div class="content" id="sectionsContainer">
+          <section
+            class="cheat-section"
+            data-search="html document structure structure doctype html head body title"
+          >
+            <h3>HTML Document Structure</h3>
+            <p>
+              This is the basic skeleton of every HTML page. It tells the
+              browser where the page starts, where the content lives, and what
+              title appears in the tab.
+            </p>
+            <div class="code-card">
+              <div class="code-toolbar">
+                <button class="button copy-btn" type="button">Copy Code</button>
+              </div>
+              <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+	&lt;meta charset="UTF-8"&gt;
+	&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+	&lt;title&gt;My Web Page&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+	&lt;h1&gt;Hello, world!&lt;/h1&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+            </div>
+          </section>
+
+          <section
+            class="cheat-section"
+            data-search="headings h1 h2 h3 h4 h5 h6 headings title"
+          >
+            <h3>Headings</h3>
+            <p>
+              Headings organize content into levels. <code>h1</code> is the most
+              important, and <code>h6</code> is the least important.
+            </p>
+            <div class="code-card">
+              <div class="code-toolbar">
+                <button class="button copy-btn" type="button">Copy Code</button>
+              </div>
+              <pre><code>&lt;h1&gt;Main Title&lt;/h1&gt;
+                        &lt;h2&gt;Section Title&lt;/h2&gt;
+                        &lt;h3&gt;Subsection Title&lt;/h3&gt;
+                        &lt;h4&gt;Smaller Heading&lt;/h4&gt;
+                        &lt;h5&gt;Even Smaller Heading&lt;/h5&gt;
+                        &lt;h6&gt;Smallest Heading&lt;/h6&gt;</code></pre>
+            </div>
+          </section>
+
+          <section
+            class="cheat-section"
+            data-search="paragraphs p text paragraph break line"
+          >
+            <h3>Paragraphs</h3>
+            <p>
+              Use paragraphs to write normal text. They are one of the most
+              common tags in HTML and automatically add spacing around the text.
+            </p>
+            <div class="code-card">
+              <div class="code-toolbar">
+                <button class="button copy-btn" type="button">Copy Code</button>
+              </div>
+              <pre><code>&lt;p&gt;This is a paragraph.&lt;/p&gt;
+&lt;p&gt;This is another paragraph.&lt;/p&gt;</code></pre>
+            </div>
+          </section>
+
+          <section
+            class="cheat-section"
+            data-search="links anchor a href target url hyperlink"
+          >
+            <h3>Links</h3>
+            <p>
+              Links connect one page to another. The <code>href</code> attribute
+              stores the destination URL.
+            </p>
+            <div class="code-card">
+              <div class="code-toolbar">
+                <button class="button copy-btn" type="button">Copy Code</button>
+              </div>
+              <pre><code>&lt;a href="https://example.com" target="_blank"&gt;
+	Visit Example
+&lt;/a&gt;</code></pre>
+            </div>
+          </section>
+
+          <section
+            class="cheat-section"
+            data-search="images img src alt width height picture photo"
+          >
+            <h3>Images</h3>
+            <p>
+              Images are added with the <code>img</code> tag. Always include
+              descriptive <code>alt</code> text for accessibility.
+            </p>
+            <div class="code-card">
+              <div class="code-toolbar">
+                <button class="button copy-btn" type="button">Copy Code</button>
+              </div>
+              <pre><code>&lt;img src="cat.jpg" alt="A cat sitting on a couch" width="400"&gt;</code></pre>
+            </div>
+          </section>
+
+          <section
+            class="cheat-section"
+            data-search="lists ul ol li ordered unordered items bullets numbers"
+          >
+            <h3>Lists</h3>
+            <p>
+              Use unordered lists for bullets and ordered lists for numbered
+              steps. Each item goes inside an <code>li</code> tag.
+            </p>
+            <div class="code-card">
+              <div class="code-toolbar">
+                <button class="button copy-btn" type="button">Copy Code</button>
+              </div>
+              <pre><code>&lt;ul&gt;
+	&lt;li&gt;Apples&lt;/li&gt;
+	&lt;li&gt;Bananas&lt;/li&gt;
+	&lt;li&gt;Oranges&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;ol&gt;
+	&lt;li&gt;Wake up&lt;/li&gt;
+	&lt;li&gt;Learn HTML&lt;/li&gt;
+	&lt;li&gt;Build a page&lt;/li&gt;
+&lt;/ol&gt;</code></pre>
+            </div>
+          </section>
+
+          <section
+            class="cheat-section"
+            data-search="tables table tr th td rows columns data"
+          >
+            <h3>Tables</h3>
+            <p>
+              Tables are useful for showing structured data in rows and columns.
+              Use <code>th</code> for headers and <code>td</code> for data
+              cells.
+            </p>
+            <div class="code-card">
+              <div class="code-toolbar">
+                <button class="button copy-btn" type="button">Copy Code</button>
+              </div>
+              <pre><code>&lt;table&gt;
+	&lt;tr&gt;
+		&lt;th&gt;Name&lt;/th&gt;
+		&lt;th&gt;Age&lt;/th&gt;
+	&lt;/tr&gt;
+	&lt;tr&gt;
+		&lt;td&gt;Ava&lt;/td&gt;
+		&lt;td&gt;12&lt;/td&gt;
+	&lt;/tr&gt;
+&lt;/table&gt;</code></pre>
+            </div>
+          </section>
+
+          <section
+            class="cheat-section"
+            data-search="forms form input label submit textarea select action method"
+          >
+            <h3>Forms</h3>
+            <p>
+              Forms collect information from users, such as names, email
+              addresses, or messages. Inputs and labels are the building blocks.
+            </p>
+            <div class="code-card">
+              <div class="code-toolbar">
+                <button class="button copy-btn" type="button">Copy Code</button>
+              </div>
+              <pre><code>&lt;form&gt;
+	&lt;label for="name"&gt;Name:&lt;/label&gt;
+	&lt;input type="text" id="name" name="name"&gt;
+
+	&lt;label for="message"&gt;Message:&lt;/label&gt;
+	&lt;textarea id="message" name="message"&gt;&lt;/textarea&gt;
+
+	&lt;button type="submit"&gt;Send&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+            </div>
+          </section>
+
+          <section
+            class="cheat-section"
+            data-search="buttons button click submit reset interactive"
+          >
+            <h3>Buttons</h3>
+            <p>
+              Buttons are clickable elements that trigger actions like
+              submitting a form or running JavaScript.
+            </p>
+            <div class="code-card">
+              <div class="code-toolbar">
+                <button class="button copy-btn" type="button">Copy Code</button>
+              </div>
+              <pre><code>&lt;button type="button"&gt;Click Me&lt;/button&gt;
+&lt;button type="submit"&gt;Submit Form&lt;/button&gt;</code></pre>
+            </div>
+          </section>
+
+          <section
+            class="cheat-section"
+            data-search="input types text email password number date checkbox radio file range search url tel color"
+          >
+            <h3>Input Types</h3>
+            <p>
+              HTML provides many input types for different kinds of data.
+              Choosing the right type improves user experience on mobile and
+              desktop.
+            </p>
+            <div class="code-card">
+              <div class="code-toolbar">
+                <button class="button copy-btn" type="button">Copy Code</button>
+              </div>
+              <pre><code>&lt;input type="text" placeholder="Your name"&gt;
+&lt;input type="email" placeholder="you@example.com"&gt;
+&lt;input type="password" placeholder="Password"&gt;
+&lt;input type="number" min="1" max="10"&gt;
+&lt;input type="date"&gt;
+&lt;input type="checkbox"&gt; I agree</code></pre>
+            </div>
+          </section>
+
+          <section
+            class="cheat-section"
+            data-search="div span inline block container wrapper text"
+          >
+            <h3>Div and Span</h3>
+            <p>
+              <code>div</code> is a block-level container used to group larger
+              sections, while <code>span</code> is inline and good for small
+              pieces of text.
+            </p>
+            <div class="code-card">
+              <div class="code-toolbar">
+                <button class="button copy-btn" type="button">Copy Code</button>
+              </div>
+              <pre><code>&lt;div class="card"&gt;
+	&lt;h3&gt;Profile&lt;/h3&gt;
+	&lt;p&gt;Hello, my name is &lt;span&gt;Mia&lt;/span&gt;.&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+            </div>
+          </section>
+
+          <section
+            class="cheat-section"
+            data-search="comments comment html hidden note developer"
+          >
+            <h3>Comments</h3>
+            <p>
+              Comments help you leave notes in your code. Browsers ignore them,
+              so they do not appear on the page.
+            </p>
+            <div class="code-card">
+              <div class="code-toolbar">
+                <button class="button copy-btn" type="button">Copy Code</button>
+              </div>
+              <pre><code>&lt;!-- This is a comment --&gt;
+&lt;p&gt;This text appears on the page.&lt;/p&gt;</code></pre>
+            </div>
+          </section>
+
+          <section
+            class="cheat-section"
+            data-search="semantic html tags header nav main section article aside footer figure figcaption"
+          >
+            <h3>Semantic HTML Tags</h3>
+            <p>
+              Semantic tags describe the meaning of content, which helps with
+              accessibility, SEO, and code readability.
+            </p>
+            <div class="code-card">
+              <div class="code-toolbar">
+                <button class="button copy-btn" type="button">Copy Code</button>
+              </div>
+              <pre><code>&lt;header&gt;Site Header&lt;/header&gt;
+&lt;nav&gt;Navigation Links&lt;/nav&gt;
+&lt;main&gt;
+	&lt;section&gt;
+		&lt;article&gt;Article content&lt;/article&gt;
+	&lt;/section&gt;
+&lt;/main&gt;
+&lt;footer&gt;Site Footer&lt;/footer&gt;</code></pre>
+            </div>
+          </section>
+
+          <section
+            class="cheat-section"
+            data-search="audio video media controls autoplay loop muted source"
+          >
+            <h3>Audio and Video</h3>
+            <p>
+              Use the <code>audio</code> and <code>video</code> tags to embed
+              media. Add <code>controls</code> so the user can play, pause, and
+              adjust volume.
+            </p>
+            <div class="code-card">
+              <div class="code-toolbar">
+                <button class="button copy-btn" type="button">Copy Code</button>
+              </div>
+              <pre><code>&lt;audio controls&gt;
+	&lt;source src="song.mp3" type="audio/mpeg"&gt;
+	Your browser does not support audio.
+&lt;/audio&gt;
+
+&lt;video controls width="320"&gt;
+	&lt;source src="movie.mp4" type="video/mp4"&gt;
+	Your browser does not support video.
+&lt;/video&gt;</code></pre>
+            </div>
+          </section>
+
+          <section
+            class="cheat-section"
+            data-search="meta tags charset viewport description author robots"
+          >
+            <h3>Basic Meta Tags</h3>
+            <p>
+              Meta tags live inside the <code>head</code> section and give the
+              browser useful information about the page.
+            </p>
+            <div class="code-card">
+              <div class="code-toolbar">
+                <button class="button copy-btn" type="button">Copy Code</button>
+              </div>
+              <pre><code>&lt;meta charset="UTF-8"&gt;
+&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+&lt;meta name="description" content="A beginner-friendly HTML cheat sheet"&gt;
+&lt;meta name="author" content="Your Name"&gt;</code></pre>
+            </div>
+          </section>
+
+          <div id="noResults" class="no-results">No results found</div>
+        </div>
+      </article>
+    </main>
+
+    <button
+      id="backToTop"
+      class="back-to-top"
+      type="button"
+      aria-label="Back to top"
+    >
+      Back to Top
+    </button>
+
+    <script>
+      (function () {
+        const themeToggle = document.getElementById("themeToggle");
+        const searchInput = document.getElementById("searchInput");
+        const sections = Array.from(
+          document.querySelectorAll(".cheat-section"),
+        );
+        const noResults = document.getElementById("noResults");
+        const backToTop = document.getElementById("backToTop");
+        const root = document.documentElement;
+
+        function setTheme(theme) {
+          if (theme === "dark") {
+            root.setAttribute("data-theme", "dark");
+            themeToggle.setAttribute("aria-pressed", "true");
+          } else {
+            root.removeAttribute("data-theme");
+            themeToggle.setAttribute("aria-pressed", "false");
+          }
+          localStorage.setItem("html-cheat-sheet-theme", theme);
+        }
+
+        function getStoredTheme() {
+          return (
+            localStorage.getItem("html-cheat-sheet-theme") ||
+            (window.matchMedia &&
+            window.matchMedia("(prefers-color-scheme: dark)").matches
+              ? "dark"
+              : "light")
+          );
+        }
+
+        function filterSections() {
+          const term = searchInput.value.trim().toLowerCase();
+          let visibleCount = 0;
+
+          sections.forEach((section) => {
+            const haystack = (
+              section.dataset.search +
+              " " +
+              section.textContent
+            ).toLowerCase();
+            const matches = haystack.includes(term);
+            section.classList.toggle("hidden", term.length > 0 && !matches);
+            if (!section.classList.contains("hidden")) {
+              visibleCount += 1;
+            }
+          });
+
+          noResults.style.display = visibleCount === 0 ? "block" : "none";
+        }
+
+        async function copyCode(button) {
+          const codeBlock = button.closest(".code-card").querySelector("code");
+          const text = codeBlock.innerText;
+
+          try {
+            await navigator.clipboard.writeText(text);
+            const originalText = button.textContent;
+            button.textContent = "Copied!";
+            button.style.borderColor = "var(--success)";
+            button.style.color = "var(--success)";
+            setTimeout(() => {
+              button.textContent = originalText;
+              button.style.borderColor = "";
+              button.style.color = "";
+            }, 1400);
+          } catch (error) {
+            button.textContent = "Copy failed";
+            setTimeout(() => {
+              button.textContent = "Copy Code";
+            }, 1400);
+          }
+        }
+
+        function updateBackToTop() {
+          backToTop.style.display =
+            window.scrollY > 350 ? "inline-flex" : "none";
+        }
+
+        themeToggle.addEventListener("click", () => {
+          const nextTheme =
+            root.getAttribute("data-theme") === "dark" ? "light" : "dark";
+          setTheme(nextTheme);
+        });
+
+        searchInput.addEventListener("input", filterSections);
+
+        document.addEventListener("click", (event) => {
+          const button = event.target.closest(".copy-btn");
+          if (button) {
+            copyCode(button);
+          }
+        });
+
+        backToTop.addEventListener("click", () => {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        });
+
+        window.addEventListener("scroll", updateBackToTop, { passive: true });
+
+        setTheme(getStoredTheme());
+        filterSections();
+        updateBackToTop();
+      })();
+    </script>
+  </body>
+</html>
