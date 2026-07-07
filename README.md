@@ -24,12 +24,12 @@ An easy-to-scan HTML reference page for beginners. It includes common tags, shor
 
 ## Files
 
-- `Index.html` - the main cheat sheet page
+- `index.html` - the main cheat sheet page
 - `html_logo.webp` - the logo used in the header
 
 ## How To Use
 
-1. Open `Index.html` in your browser.
+1. Open `index.html` in your browser.
 2. Search for a tag or topic using the search bar.
 3. Click any copy button to grab a code sample.
 4. Use the theme toggle if you want a different color scheme.
@@ -37,4 +37,4 @@ An easy-to-scan HTML reference page for beginners. It includes common tags, shor
 ## Notes
 
 - This project is static and does not require a build step.
-- You can edit `Index.html` directly to add new examples or sections.
+- You can edit `index.html` directly to add new examples or sections.
