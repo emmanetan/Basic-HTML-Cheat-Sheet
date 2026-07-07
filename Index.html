@@ -478,6 +478,28 @@
         border-color: var(--accent);
       }
 
+      .site-footer {
+        border-top: 1px solid var(--border);
+        background: var(--card);
+        color: var(--muted);
+        padding: 20px 0;
+      }
+
+      .site-footer .footer-inner {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 12px;
+        font-size: 0.95rem;
+      }
+
+      .site-footer a {
+        color: var(--accent);
+      }
+
       .status {
         font-size: 0.9rem;
         color: var(--muted);
@@ -971,6 +993,13 @@
         </div>
       </article>
     </main>
+
+    <footer class="site-footer" role="contentinfo">
+      <div class="footer-inner">
+        <div>© 2026 Basic HTML Cheat Sheet</div>
+        <div><a href="README.md">About / README</a></div>
+      </div>
+    </footer>
 
     <button
       id="backToTop"
