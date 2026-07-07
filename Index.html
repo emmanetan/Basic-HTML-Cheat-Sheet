@@ -200,7 +200,6 @@
       }
 
       .button:hover {
-        
         border-color: var(--accent);
       }
 
@@ -222,8 +221,12 @@
         border-radius: 999px;
         overflow: hidden;
         background:
-          linear-gradient(180deg, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0))
-          , var(--accent);
+          linear-gradient(
+            180deg,
+            rgba(255, 255, 255, 0.18),
+            rgba(255, 255, 255, 0)
+          ),
+          var(--accent);
         box-shadow:
           inset 0 1px 0 rgba(255, 255, 255, 0.12),
           0 1px 0 rgba(27, 31, 36, 0.04);
@@ -238,8 +241,12 @@
 
       [data-theme="dark"] #themeToggle {
         background:
-          linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0))
-          , #1f2937;
+          linear-gradient(
+            180deg,
+            rgba(255, 255, 255, 0.06),
+            rgba(255, 255, 255, 0)
+          ),
+          #1f2937;
         box-shadow:
           inset 0 1px 0 rgba(255, 255, 255, 0.05),
           0 1px 0 rgba(1, 4, 9, 0.28);
@@ -569,7 +576,6 @@
             </span>
             <h1>Basic HTML Cheat Sheet</h1>
           </div>
-          
         </div>
         <div class="controls">
           <div class="search-wrap">
@@ -589,11 +595,27 @@
           >
             <span class="theme-switch-track" aria-hidden="true"></span>
             <span class="theme-switch-thumb" aria-hidden="true"></span>
-            <svg class="theme-switch-icon sun" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-              <path fill="currentColor" d="M12 18a6 6 0 1 1 0-12 6 6 0 0 1 0 12zm0-15a1 1 0 0 1 1 1v1.1a1 1 0 1 1-2 0V4a1 1 0 0 1 1-1zm0 17.9a1 1 0 0 1 1 1V20a1 1 0 1 1-2 0v1.9a1 1 0 0 1 1-1zM4 11h1.1a1 1 0 1 1 0 2H4a1 1 0 1 1 0-2zm14.9 0H20a1 1 0 1 1 0 2h-1.1a1 1 0 1 1 0-2zM5.6 6.8a1 1 0 0 1 1.4 0l.8.8a1 1 0 1 1-1.4 1.4l-.8-.8a1 1 0 0 1 0-1.4zm10.6 10.6a1 1 0 0 1 1.4 0l.8.8a1 1 0 0 1-1.4 1.4l-.8-.8a1 1 0 0 1 0-1.4zM17.2 5.6a1 1 0 0 1 0 1.4l-.8.8a1 1 0 1 1-1.4-1.4l.8-.8a1 1 0 0 1 1.4 0zM6.4 16.4a1 1 0 0 1 0 1.4l-.8.8a1 1 0 0 1-1.4-1.4l.8-.8a1 1 0 0 1 1.4 0z"/>
+            <svg
+              class="theme-switch-icon sun"
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <path
+                fill="currentColor"
+                d="M12 18a6 6 0 1 1 0-12 6 6 0 0 1 0 12zm0-15a1 1 0 0 1 1 1v1.1a1 1 0 1 1-2 0V4a1 1 0 0 1 1-1zm0 17.9a1 1 0 0 1 1 1V20a1 1 0 1 1-2 0v1.9a1 1 0 0 1 1-1zM4 11h1.1a1 1 0 1 1 0 2H4a1 1 0 1 1 0-2zm14.9 0H20a1 1 0 1 1 0 2h-1.1a1 1 0 1 1 0-2zM5.6 6.8a1 1 0 0 1 1.4 0l.8.8a1 1 0 1 1-1.4 1.4l-.8-.8a1 1 0 0 1 0-1.4zm10.6 10.6a1 1 0 0 1 1.4 0l.8.8a1 1 0 0 1-1.4 1.4l-.8-.8a1 1 0 0 1 0-1.4zM17.2 5.6a1 1 0 0 1 0 1.4l-.8.8a1 1 0 1 1-1.4-1.4l.8-.8a1 1 0 0 1 1.4 0zM6.4 16.4a1 1 0 0 1 0 1.4l-.8.8a1 1 0 0 1-1.4-1.4l.8-.8a1 1 0 0 1 1.4 0z"
+              />
             </svg>
-            <svg class="theme-switch-icon moon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-              <path fill="currentColor" d="M21 13.2A8.5 8.5 0 0 1 10.8 3a9 9 0 1 0 10.2 10.2z"/>
+            <svg
+              class="theme-switch-icon moon"
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <path
+                fill="currentColor"
+                d="M21 13.2A8.5 8.5 0 0 1 10.8 3a9 9 0 1 0 10.2 10.2z"
+              />
             </svg>
           </button>
         </div>
@@ -676,7 +698,7 @@
                 <button class="button copy-btn" type="button">Copy Code</button>
               </div>
               <pre><code>&lt;p&gt;This is a paragraph.&lt;/p&gt;
-&lt;p&gt;This is another paragraph.&lt;/p&gt;</code></pre>
+              &lt;p&gt;This is another paragraph.&lt;/p&gt;</code></pre>
             </div>
           </section>
 
